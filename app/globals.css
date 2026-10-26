@@ -1,16 +1,18 @@
 @import "tailwindcss";
 
 @theme {
-  --color-primary-neon: #00ff85;
-  --color-live-red: #ef4444;
-  --color-card-yellow: #f59e0b;
-  --color-card-red: #dc2626;
-  --color-dark-pitch: #05130b;
-  --color-surface-glass: rgba(255, 255, 255, 0.05);
-  --color-border-glass: rgba(255, 255, 255, 0.12);
+  --color-canvas: #efefeb;
+  --color-surface: #ffffff;
+  --color-ink: #1b2733;
+  --color-primary-blue: #3f88d9;
+  --color-accent-coral: #e16044;
+  --color-success-green: #0aab36;
+  --color-card-yellow: #f5b800;
+  --color-border-card: rgba(0, 0, 0, 0.08);
 
-  --shadow-neon: 0 0 24px rgba(0, 255, 133, 0.35);
-  --shadow-live: 0 0 0 2px #ef4444, 0 0 22px rgba(239, 68, 68, 0.45);
+  --shadow-card: 0 1px 2px rgba(27, 39, 51, 0.06), 0 4px 14px rgba(27, 39, 51, 0.06);
+  --shadow-active: 0 0 0 4px rgba(63, 136, 217, 0.18);
+  --shadow-live: 0 0 0 2px #e16044, 0 6px 18px rgba(225, 96, 68, 0.28);
 }
 
 @theme inline {
@@ -18,11 +20,11 @@
   --font-sans: var(--font-barlow), sans-serif;
 }
 
-/* Tarjeta de vidrio esmerilado */
-@utility glass {
-  background-color: var(--color-surface-glass);
-  border: 1px solid var(--color-border-glass);
-  backdrop-filter: blur(18px);
+/* Tarjeta blanca con borde sutil y sombra suave */
+@utility card {
+  background-color: var(--color-surface);
+  border: 1px solid var(--color-border-card);
+  box-shadow: var(--shadow-card);
 }
 
 /* Títulos y números grandes */
@@ -34,14 +36,8 @@
 
 body {
   min-height: 100vh;
-  color: #f1f5f2;
-  background-color: var(--color-dark-pitch);
-  /* Auras radiales que simulan reflectores sobre el césped */
-  background-image:
-    radial-gradient(ellipse 60% 45% at 15% 0%, rgba(0, 255, 133, 0.14), transparent 70%),
-    radial-gradient(ellipse 55% 40% at 85% 0%, rgba(16, 185, 129, 0.12), transparent 70%),
-    radial-gradient(ellipse 70% 35% at 50% 100%, rgba(16, 185, 129, 0.08), transparent 70%);
-  background-attachment: fixed;
+  color: var(--color-ink);
+  background-color: var(--color-canvas);
 }
 
 @keyframes live-blink {

@@ -13,9 +13,9 @@ export function Navbar() {
   const pathname = usePathname();
 
   return (
-    <header className="glass fixed inset-x-0 top-0 z-40 border-x-0 border-t-0">
+    <header className="card fixed inset-x-0 top-0 z-40 border-x-0 border-t-0">
       <nav className="mx-auto flex max-w-7xl items-center justify-between gap-4 px-4 py-3">
-        <Link href="/" className="display text-2xl text-primary-neon">
+        <Link href="/" className="display text-2xl text-primary-blue">
           Torneo Relámpago
         </Link>
         <ul className="flex gap-1">
@@ -28,8 +28,8 @@ export function Navbar() {
                   aria-current={active ? "page" : undefined}
                   className={`block rounded-full px-4 py-1.5 text-sm font-semibold transition ${
                     active
-                      ? "bg-primary-neon text-dark-pitch shadow-neon"
-                      : "text-white/70 hover:bg-white/10 hover:text-white"
+                      ? "bg-primary-blue text-white shadow-card"
+                      : "text-ink/70 hover:bg-black/5 hover:text-ink"
                   }`}
                 >
                   {label}

@@ -29,7 +29,7 @@ export function VisorPanel({ visorId }: { visorId: string | null }) {
     (m) => m.home_team_id && m.away_team_id && (visorId === null || m.visor_id === visorId),
   );
   if (assigned.length === 0) {
-    return <p className="py-20 text-center text-white/60">No tienes partidos asignados todavía.</p>;
+    return <p className="py-20 text-center text-ink/60">No tienes partidos asignados todavía.</p>;
   }
 
   const courts = [...new Set(assigned.map(courtOf))].sort();
@@ -48,7 +48,7 @@ export function VisorPanel({ visorId }: { visorId: string | null }) {
               setMatchId(null);
             }}
             className={`rounded-full px-4 py-2 text-sm font-semibold ${
-              c === court ? "bg-primary-neon text-dark-pitch shadow-neon" : "glass"
+              c === court ? "bg-primary-blue text-white shadow-card" : "card"
             }`}
           >
             {c}
@@ -61,13 +61,13 @@ export function VisorPanel({ visorId }: { visorId: string | null }) {
           <li key={m.id}>
             <button
               onClick={() => setMatchId(m.id)}
-              className={`glass w-full rounded-xl px-4 py-3 text-left ${
-                m.id === selected?.id ? "border-primary-neon shadow-neon" : ""
+              className={`card w-full rounded-xl px-4 py-3 text-left ${
+                m.id === selected?.id ? "border-primary-blue shadow-active" : ""
               }`}
             >
-              <span className="block text-xs text-white/50">
+              <span className="block text-xs text-ink/50">
                 {CATEGORIES[m.category].name} · {ROUND_LABELS[m.round]}
-                {m.status === "in_progress" && <span className="animate-live ml-2 text-live-red">● EN VIVO</span>}
+                {m.status === "in_progress" && <span className="animate-live ml-2 text-accent-coral">● EN VIVO</span>}
                 {m.status === "completed" && " · Finalizado"}
               </span>
               <span className="font-semibold">{matchTitle(m, teamsById)}</span>

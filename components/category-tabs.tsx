@@ -18,18 +18,16 @@ export function CategoryTabs({ value, onChange }: CategoryTabsProps) {
             role="tab"
             aria-selected={active}
             onClick={() => onChange(id)}
-            className={`glass rounded-2xl px-3 py-3 text-left transition sm:px-5 ${
-              active
-                ? "border-primary-neon bg-primary-neon/10 shadow-neon"
-                : "hover:bg-white/10"
+            className={`card rounded-2xl px-3 py-3 text-left transition sm:px-5 ${
+              active ? "border-primary-blue shadow-active" : "hover:border-primary-blue/40"
             }`}
           >
             <span
-              className={`display block text-2xl sm:text-3xl ${active ? "text-primary-neon" : ""}`}
+              className={`display block text-2xl sm:text-3xl ${active ? "text-primary-blue" : ""}`}
             >
               {name}
             </span>
-            <span className="block truncate text-xs text-white/60 sm:text-sm">{description}</span>
+            <span className="block truncate text-xs text-ink/60 sm:text-sm">{description}</span>
           </button>
         );
       })}

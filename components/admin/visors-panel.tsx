@@ -12,8 +12,8 @@ export function VisorsPanel({ visors }: { visors: Visor[] }) {
   const [pin, setPin] = useState("");
 
   return (
-    <section className="glass space-y-4 rounded-2xl p-4">
-      <h2 className="display text-2xl text-primary-neon">Visores de cancha</h2>
+    <section className="card space-y-4 rounded-2xl p-4">
+      <h2 className="display text-2xl text-primary-blue">Visores de cancha</h2>
       <form
         className="grid gap-2 sm:grid-cols-[1fr_1fr_auto]"
         onSubmit={(e) => {
@@ -45,13 +45,13 @@ export function VisorsPanel({ visors }: { visors: Visor[] }) {
           Agregar
         </button>
       </form>
-      {error && <p className="text-sm text-live-red">{error}</p>}
-      <ul className="divide-y divide-border-glass">
+      {error && <p className="text-sm text-accent-coral">{error}</p>}
+      <ul className="divide-y divide-border-card">
         {visors.map((visor) => (
           <li key={visor.id} className="flex items-center justify-between py-2">
             <span className="font-semibold">{visor.name}</span>
             <button
-              className={`${GHOST_BUTTON_CLASS} text-live-red`}
+              className={`${GHOST_BUTTON_CLASS} text-accent-coral`}
               disabled={pending}
               onClick={() => run(() => deleteVisor(visor.id))}
             >

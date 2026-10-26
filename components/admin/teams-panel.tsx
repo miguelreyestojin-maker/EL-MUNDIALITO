@@ -32,7 +32,7 @@ function TeamItem({ team, assigned }: { team: Team; assigned: boolean }) {
         )}
         <span
           className={`rounded-full px-2 py-0.5 text-xs font-semibold ${
-            assigned ? "bg-primary-neon/15 text-primary-neon" : "bg-white/10 text-white/60"
+            assigned ? "bg-success-green/10 text-success-green" : "bg-black/5 text-ink/60"
           }`}
         >
           {assigned ? "asignado" : "pendiente"}
@@ -51,14 +51,14 @@ function TeamItem({ team, assigned }: { team: Team; assigned: boolean }) {
           </button>
         )}
         <button
-          className={`${GHOST_BUTTON_CLASS} text-live-red`}
+          className={`${GHOST_BUTTON_CLASS} text-accent-coral`}
           disabled={pending}
           onClick={() => run(() => deleteTeam(team.id))}
         >
           Eliminar
         </button>
       </div>
-      {error && <p className="text-xs text-live-red">{error}</p>}
+      {error && <p className="text-xs text-accent-coral">{error}</p>}
     </li>
   );
 }
@@ -70,8 +70,8 @@ export function TeamsPanel({ category, teams, matches }: TeamsPanelProps) {
   const assignedIds = new Set(matches.flatMap((m) => [m.home_team_id, m.away_team_id]));
 
   return (
-    <section className="glass space-y-4 rounded-2xl p-4">
-      <h2 className="display text-2xl text-primary-neon">
+    <section className="card space-y-4 rounded-2xl p-4">
+      <h2 className="display text-2xl text-primary-blue">
         Equipos ({teams.length}/{teamCount})
       </h2>
       <form
@@ -91,8 +91,8 @@ export function TeamsPanel({ category, teams, matches }: TeamsPanelProps) {
           Agregar
         </button>
       </form>
-      {error && <p className="text-sm text-live-red">{error}</p>}
-      <ul className="divide-y divide-border-glass">
+      {error && <p className="text-sm text-accent-coral">{error}</p>}
+      <ul className="divide-y divide-border-card">
         {teams.map((team) => (
           <TeamItem key={team.id} team={team} assigned={assignedIds.has(team.id)} />
         ))}

@@ -70,7 +70,7 @@ function MatchEditor({ match, availableTeams, teamsById, visors }: MatchEditorPr
 
   return (
     <li className="space-y-2 py-3">
-      <div className="flex items-center justify-between text-xs text-white/50">
+      <div className="flex items-center justify-between text-xs text-ink/50">
         <span>Partido {match.position + 1}</span>
         <span>{STATUS_LABELS[match.status]}</span>
       </div>
@@ -81,7 +81,7 @@ function MatchEditor({ match, availableTeams, teamsById, visors }: MatchEditorPr
         </div>
       ) : (
         <p className="font-semibold">
-          {teamName(match.home_team_id)} <span className="text-white/40">vs</span>{" "}
+          {teamName(match.home_team_id)} <span className="text-ink/40">vs</span>{" "}
           {teamName(match.away_team_id)}
         </p>
       )}
@@ -110,7 +110,7 @@ function MatchEditor({ match, availableTeams, teamsById, visors }: MatchEditorPr
           Guardar
         </button>
       </div>
-      {error && <p className="text-xs text-live-red">{error}</p>}
+      {error && <p className="text-xs text-accent-coral">{error}</p>}
     </li>
   );
 }
@@ -130,14 +130,14 @@ export function MatchesPanel({ category, teams, matches, visors, teamsById }: Ma
   );
 
   return (
-    <section className="glass space-y-4 rounded-2xl p-4">
-      <h2 className="display text-2xl text-primary-neon">Cruces y asignación</h2>
+    <section className="card space-y-4 rounded-2xl p-4">
+      <h2 className="display text-2xl text-primary-blue">Cruces y asignación</h2>
       {CATEGORIES[category].rounds
         .flatMap((round) => (round === "final" ? (["third", "final"] as const) : [round]))
         .map((round) => (
           <div key={round}>
-            <h3 className="display text-xl text-white/80">{ROUND_LABELS[round]}</h3>
-            <ul className="divide-y divide-border-glass">
+            <h3 className="display text-xl text-primary-blue">{ROUND_LABELS[round]}</h3>
+            <ul className="divide-y divide-border-card">
               {matchesOfRound(matches, round).map((match) => (
                 <MatchEditor
                   key={match.id}

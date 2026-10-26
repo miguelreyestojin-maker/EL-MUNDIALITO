@@ -23,11 +23,11 @@ export function PublicView() {
     <div className="space-y-8">
       <CategoryTabs value={category} onChange={setCategory} />
       <section className="space-y-3">
-        <h2 className="display text-3xl text-primary-neon">Llaves</h2>
+        <h2 className="display text-3xl text-primary-blue">Llaves</h2>
         <Bracket category={category} matches={matches} teamsById={indexTeams(teams)} />
       </section>
       <section className="space-y-3">
-        <h2 className="display text-3xl text-primary-neon">Posiciones</h2>
+        <h2 className="display text-3xl text-primary-blue">Posiciones</h2>
         <RankingTable rows={computeRanking(teams, matches)} />
       </section>
     </div>

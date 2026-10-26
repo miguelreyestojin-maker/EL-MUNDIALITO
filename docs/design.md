@@ -1,77 +1,76 @@
-# Guía de Diseño y Sistema de Tokens - "Torneo Relámpago"
+# Guía de Diseño y Sistema de Tokens - "Torneo Relámpago" (Edición Especial FIFA / Estética Lúdica)
 
 ## 1. Concepto Estético
-* **Concepto:** *Noche de cancha iluminada*.
-* **Fondo:** Verde muy oscuro con auras radiales sutiles que simulan reflectores sobre el césped.
-* **Superficies:** Tarjetas de vidrio esmerilado (*glassmorphism*) con `backdrop-blur: 18px` y bordes blancos translúcidos al 12% (`border-white/12`).
-* **Acento Principal:** Verde neón eléctrico para estados de victoria, líderes de ranking y marcas importantes, acompañado de un halo de luz suave (*glow*) en elementos activos.
+- **Concepto:** *Cancha Festiva / Estilo Oficial FIFA World Cup & Education Fund*. Transición total de modo oscuro a un diseño luminoso, fresco, juvenil y accesible.
+- **Fondo General (`canvas`):** `#efefeb` (Crema claro / papel ecológico de alta calidad).
+- **Superficies y Tarjetas:** Tarjetas blancas limpias y nítidas (`#ffffff`) con ligeras sombras suaves y bordes sutiles (`border-black/10`), simulando tarjetas físicas coleccionables o calcomanías organizadas.
+- **Acentos Visuales:** 
+  - **Azul Principal (`#3f88d9`):** Usado en la navegación, títulos principales, bordes activos de categorías y elementos de marca.
+  - **Coral / Rojo Vivo (`#e16044`):** Usado para estados "En Vivo", insignias parpadeantes, llamadas a la acción secundarias y tarjetas rojas de disciplina.
+  - **Verde Deportivo (`#0aab36`):** Usado para indicar ganadores, líderes del ranking, elementos de éxito y acentos de campo.
+- **Toques Gráficos (Doodles / Estilo Manual):** Integración sutil de elementos gráficos decorativos inspirados en la estética de arte popular juvenil (estrellas dibujadas a mano, silbatos, corazones y trazos de contorno).
 
 ---
 
 ## 2. Tipografía
 
 ### Display (Encabezados y Números Grandes)
-* **Fuente:** `Bebas Neue`
-* **Estilo:** Mayúsculas con tracking amplio (`tracking-wider`).
-* **Uso:** Títulos principales, marcadores de partidos, nombres de categorías y botones de acción.
+- **Fuente:** `Bebas Neue` (o tipografía condensada de alto impacto).
+- **Estilo:** Mayúsculas con tracking amplio (`tracking-wider`).
+- **Uso:** Títulos principales, marcadores de partidos, nombres de categorías y botones de acción.
 
 ### Texto Principal
-* **Fuente:** `Barlow` (Pesos: 400 / 500 / 600 / 700).
-* **Uso:** Cuerpos de texto, tablas, nombres de equipos y etiquetas de estado.
+- **Fuente:** `Barlow` (Pesos: 400 / 500 / 600 / 700).
+- **Uso:** Cuerpos de texto, tablas, nombres de equipos y etiquetas de estado.
 
 ### Marcadores y Contadores
-* **Regla:** Aplicación de propiedad `tabular-nums` (fuentes monoespaciadas para dígitos) en todos los marcadores y contadores para evitar desplazamientos visuales durante cambios en vivo.
+- **Regla:** Aplicación obligatoria de la propiedad `tabular-nums` en todos los dígitos de marcadores para evitar saltos visuales durante actualizaciones en tiempo real.
 
 ---
 
-## 3. Paleta de Colores y Tokens
+## 3. Paleta de Colores y Tokens CSS
 
 | Token | Valor Hex / Clase | Aplicación / Uso |
 | :--- | :--- | :--- |
-| `--color-primary-neon` | `#10B981` / `#00FF85` | Acento principal, ganadores, primer lugar, halos de luz (*glow*). |
-| `--color-live-red` | `#EF4444` | Estado "En Vivo", indicador parpadeante, acciones destructivas. |
-| `--color-card-yellow` | `#F59E0B` | Contador de tarjetas amarillas de disciplina. |
-| `--color-card-red` | `#DC2626` | Contador de tarjetas rojas de disciplina. |
-| `--bg-dark-pitch` | `#05130B` | Fondo principal (verde ultra oscuro estilo cancha nocturna). |
-| `--bg-surface-glass` | `rgba(255, 255, 255, 0.05)` | Contenedores de vidrio esmerilado con blur de 18px. |
-| `--border-glass` | `rgba(255, 255, 255, 0.12)` | Bordes sutiles de las tarjetas de vidrio. |
+| `--bg-canvas` | `#efefeb` | Fondo general de toda la aplicación (Crema claro). |
+| `--color-primary-blue` | `#3f88d9` | Azul principal, barra superior, elementos activos de navegación. |
+| `--color-accent-coral` | `#e16044` | Estado "En Vivo", alertas, botones de acción destructiva o cierre. |
+| `--color-success-green` | `#0aab36` | Ganadores, posiciones líderes, indicadores positivos. |
+| `--bg-surface-card` | `#ffffff` | Fondo de las tarjetas de partidos, paneles de categorías y modales. |
+| `--border-card` | `rgba(0, 0, 0, 0.08)` | Bordes limpios y sutiles para tarjetas sobre fondo claro. |
 
 ---
 
 ## 4. Componentes Clave
 
 ### A. Barra Superior (Navbar)
-* Cristal de vidrio esmerilado fijo en la parte superior.
-* 3 accesos: **Público**, **Cancha**, **Admin**.
-* Indicador de sección activa tipo píldora destacada.
+- Fondo blanco o translúcido claro con sombra muy ligera.
+- Logo oficial con acentos coloridos, título **"TORNEO RELÁMPAGO"** en azul `#3f88d9`.
+- Accesos directos: **Público**, **Cancha**, **Admin** (con la sección activa resaltada en azul).
 
 ### B. Pestañas de Categoría (CategoryTabs)
-* Tres bloques de vidrio con nombre en `Bebas Neue` y descripción corta.
-* La categoría activa se rellena con borde/acento verde neón y sombra resplandeciente (*neon glow*).
+- Tres bloques blancos estilizados con el nombre en `Bebas Neue` y subtítulo.
+- La categoría seleccionada se resalta con un borde de color y un sutil halo dinámico.
 
 ### C. Tarjeta de Partido (MatchCard)
-* **Ancho fijo:** `224px`.
-* **Cabecera:** Nombre de cancha + píldora de estado (`Programado`, `EN VIVO` parpadeante, `Finalizado`).
-* **Filas de Equipos:** Dos filas con nombre del equipo, mini-contador de tarjetas y marcador numérico grande.
-* **Estados Visuales:** El equipo perdedor se atenúa (`opacity-50`); los partidos "En Vivo" llevan un anillo de luz rojo alrededor de la tarjeta.
+- **Ancho fijo:** `224px`.
+- **Fondo:** Blanco limpio (`#ffffff`) con sombra elegante.
+- **Cabecera:** Nombre de cancha + píldora de estado (`Programado` en coral, `EN VIVO` parpadeante, `Finalizado`).
+- **Filas de Equipos:** Nombre del equipo, mini-contador de tarjetas y marcador numérico grande en `tabular-nums`.
+- **Estados Visuales:** El equipo perdedor se atenúa con opacidad; los partidos en vivo llevan borde o indicador coral destacado.
 
 ### D. Árbol de Eliminatorias (Bracket)
-* Columnas organizadas por rondas (Octavos, Cuartos, Semifinal, Final).
-* Distribución vertical con alturas proporcionales derivadas de la primera ronda.
+- Columnas organizadas por rondas (Octavos, Cuartos, Semifinal, Final) sobre el fondo `#efefeb`.
+- Conectores limpios y legibles entre llaves.
 
 ### E. Tabla de Ranking (RankingTable)
-* Tabla compacta: Posición, Equipo, GF, GC, Tarjetas Amarillas, Tarjetas Rojas.
-* Los 3 primeros lugares resaltados con indicadores verde neón.
+- Tabla compacta con fondo blanco: Posición, Equipo, GF, GC, Tarjetas Amarillas, Tarjetas Roja.
+- Los 3 primeros lugares resaltados con los colores institucionales (verde neón/deportivo y azul).
 
 ### F. Control de Cancha / Staff (VisorControl)
-* Vista móvil de dos paneles lado a lado.
-* Marcador gigante (`8rem`).
-* Botón **"+ GOL"** ancho por equipo.
-* Contadores individuales para tarjetas amarillas y rojas.
-* Botón rojo a todo el ancho: **"FINALIZAR PARTIDO"**.
-* Panel emergente de penales si el marcador reglamentario queda empatado.
+- Panel móvil de control con diseño claro y táctil.
+- Marcador gigante numérico.
+- Botones grandes y accesibles para `+ GOL`, control de tarjetas y botón principal de **"FINALIZAR PARTIDO"**.
 
 ### G. Panel Admin (AdminDashboard)
-* Formulario de alta de equipos por categoría.
-* Lista de equipos inscritos con indicador de estado ("asignado" / "pendiente").
-* Selector de cruces de partidos por ronda y asignación de visores/canchas.
+- Formularios limpios, tablas ordenadas y gestión fluida de equipos y visores.
